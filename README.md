@@ -1,10 +1,10 @@
 ### **Sistema de gestão de chamados para a empresa Flash Logística**
 
-## **Estrutura do peojeto**
+## **Estrutura do projeto**
 
 Feito em HTML, CSS, JS e o banco de dados modelado e elaborado em MySQl
 
-## O Sstema possui:
+## O Sistema possui:
 
 Cadastro de Clientes com CNPJ;
 

@@ -1,11 +1,15 @@
-Sistema de gestão de chamados para a empresa Flash Logística
-Feito em HTML, CSS, JS e o banco de dados modelado e elaborado e m MySQl
+### **Sistema de gestão de chamados para a empresa Flash Logística**
 
-O Sstema possui:
-Cadastro de Clientes com CNPJ.
+## **Estrutura do peojeto**
 
-Lançamento de Serviços com o campo de Solicitante.
+Feito em HTML, CSS, JS e o banco de dados modelado e elaborado em MySQl
 
-Relatórios Profissionais com a sua logo à esquerda e cabeçalho em negrito.
+## O Sstema possui:
 
-Gestão Total: Botões para editar e excluir qualquer erro de lançamento.
+Cadastro de Clientes com CNPJ;
+
+Registro de chamado onde o usuário deverá lançar o cliente, data, solicitante do chamado, rota, valor e observação
+
+Os relatórios são chamados a partir do banco de dados MySQL que geram informações por cliente, periodo e gera em pdf personalizado para envio juunto com a nota fiscal de prestação de serviços
+
+

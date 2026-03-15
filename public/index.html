@@ -2,58 +2,78 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FlashLog CRM</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        .btn-edit { background: none; border: none; cursor: pointer; font-size: 1.2rem; }
-        .btn-delete { background: none; border: none; cursor: pointer; font-size: 1.2rem; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { border: 1px solid #ddd; padding: 10px; text-align: left; }
-        th { background: #181612; color: #F26800; }
-    </style>
 </head>
 <body>
-    <nav style="background: #181612; padding: 15px; display: flex; gap: 20px;">
-        <h2 style="color: #F26800; margin: 0; margin-right: 20px;">FLASH LOG</h2>
-        <a href="#" onclick="showSection('cadastro')" style="color: white; text-decoration: none;">Clientes</a>
-        <a href="#" onclick="showSection('chamado')" style="color: white; text-decoration: none;">Lançar Chamado</a>
-        <a href="#" onclick="showSection('relatorio')" style="color: white; text-decoration: none;">Relatórios</a>
+    <nav>
+        <div class="nav-container">
+            <b class="brand">FLASH LOG</b>
+            <div class="menu">
+                <a onclick="showSection('cadastro')">Clientes</a>
+                <a onclick="showSection('chamado')">Novo Chamado</a>
+                <a onclick="showSection('relatorio')">Relatórios</a>
+            </div>
+        </div>
     </nav>
 
-    <main style="padding: 20px;">
+    <main>
         <section id="cadastro" style="display:none;">
-            <h2>Gerenciar Clientes</h2>
-            <form id="formCliente">
+            <h2>Cadastro de Clientes</h2>
+            <form id="formCliente" class="card">
                 <input type="text" id="nome" placeholder="Nome da Empresa" required>
                 <input type="text" id="cnpj" placeholder="CNPJ" required>
-                <button type="submit">Salvar</button>
+                <button type="submit" class="btn-save">Salvar Cliente</button>
             </form>
         </section>
 
         <section id="chamado" style="display:none;">
-            <h2>Lançar Serviço</h2>
-            <form id="formChamado">
-                <select id="selectCliente" required></select><br><br>
-                <input type="date" id="data_manual" required><br><br>
-                <input type="text" id="responsavel_servico" placeholder="Solicitante" required><br><br>
-                <input type="text" id="rota" placeholder="Rota" required><br><br>
-                <input type="number" id="valor" placeholder="Valor R$" step="0.01" required><br><br>
-                <input type="text" id="descricao_servico" placeholder="Observação"><br><br>
-                <button type="submit">Registrar</button>
+            <h2>Registrar Serviço</h2>
+            <form id="formChamado" class="card">
+                <label>Cliente:</label>
+                <select id="selectCliente" required></select>
+                
+                <label>Data:</label>
+                <input type="date" id="data_manual" required>
+                
+                <label>Solicitante:</label>
+                <input type="text" id="responsavel_servico" placeholder="Quem pediu o serviço?" required>
+                
+                <label>Rota:</label>
+                <input type="text" id="rota" placeholder="Ex: Olinda -> Recife" required>
+                
+                <label>Valor (R$):</label>
+                <input type="number" id="valor" placeholder="0.00" step="0.01" required>
+                
+                <label>Observação:</label>
+                <input type="text" id="descricao_servico" placeholder="Detalhes opcionais">
+                
+                <button type="submit" class="btn-save">Registrar Chamado</button>
             </form>
         </section>
 
         <section id="relatorio">
-            <h2>Relatório de Produção</h2>
-            <select id="filtroCliente"></select>
-            <input type="date" id="dataInicio">
-            <input type="date" id="dataFim">
-            <button onclick="visualizarRelatorio()" style="background:#F26800; color:white; border:none; padding:10px; cursor:pointer;">Ver Prévia</button>
-            <button onclick="gerarRelatorioPDF()" style="background:#333; color:white; border:none; padding:10px; cursor:pointer;">Gerar PDF</button>
+            <h2>Relatórios de Produção</h2>
+            <div class="filter-bar card">
+                <select id="filtroCliente"></select>
+                <input type="date" id="dataInicio">
+                <input type="date" id="dataFim">
+                <div class="actions">
+                    <button onclick="visualizarRelatorio()" class="btn-view">Ver Prévia</button>
+                    <button onclick="gerarRelatorioPDF()" class="btn-pdf">Gerar PDF</button>
+                </div>
+            </div>
 
             <table id="tabelaPrevia" style="display:none;">
                 <thead>
-                    <tr><th>Data</th><th>Rota</th><th>Valor</th><th>Solicitante</th><th>Ações</th></tr>
+                    <tr>
+                        <th>Data</th>
+                        <th>Rota</th>
+                        <th>Valor</th>
+                        <th>Solicitante</th>
+                        <th>Ações</th>
+                    </tr>
                 </thead>
                 <tbody id="corpoPrevia"></tbody>
                 <tfoot id="pePrevia"></tfoot>
